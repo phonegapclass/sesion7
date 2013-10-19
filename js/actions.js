@@ -19,23 +19,27 @@ function leerArchivos(){
     // device APIs are available
     //
     function onDeviceReady() {
+        alert(0);
         window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, gotFS, fail);
     }
 
     function gotFS(fileSystem) {
+        alert(1);
         fileSystem.root.getFile("readme.txt", null, gotFileEntry, fail);
     }
 
     function gotFileEntry(fileEntry) {
+        alert(2);
         fileEntry.file(readAsText, fail);
     }
 
     function readAsText(file) {
+        alert(3);
         var reader = new FileReader();
         reader.onloadend = function(evt) {
             $('#aLeer').text(evt.target.result);
         };
-        reader.readAsText(file);
+        alert(reader.readAsText(file));
     }
 
     function fail(evt) {
