@@ -15,6 +15,10 @@ $(function(){
     $('#ncEnv').tap(function(){
         nuevoContacto($('#ncNom').val(),$('#ncTel').val(),$('#ncMail').val());
     });
+	
+	$('#contactos .individual li').eq(0).tap(function(){
+		leerContactos();
+	});
 });
 
 function leerArchivos(){
@@ -107,4 +111,25 @@ function nuevoContacto(nom,tel,mail){
             alert(err.code);   
         });
     },false);
+}
+
+function leerContactos(){
+	document.addEventListener("deviceready",function(){
+		function onSuccess(contacts) {
+			for(i=0;i<contacts.length;i++){
+				alert(contacts[i].name.formatted);
+			}
+		};
+		
+		function onError(contactError) {
+			alert('onError!');
+		};
+		
+		// find all contacts with 'Carlos' in any name field
+		var options      = new ContactFindOptions();
+		options.filter   = "Carlos";
+		options.multiple = true;
+		var fields       = ["displayName", "name"];
+		navigator.contacts.find(fields, onSuccess, onError, options);
+	}, false);
 }
