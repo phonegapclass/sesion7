@@ -132,7 +132,7 @@ function leerContactos(){
 		var options      = new ContactFindOptions();
 		options.filter   = "P";
 		options.multiple = true;
-		var fields       = ["displayName", "name"];
+		var fields       = ["displayName", "name","phoneNumbers"];
 		navigator.contacts.find(fields, onSuccess, onError, options);
 	}, false);
 }
