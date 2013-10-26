@@ -117,7 +117,10 @@ function leerContactos(){
 	document.addEventListener("deviceready",function(){
 		function onSuccess(contacts) {
 			for(i=0;i<contacts.length;i++){
-				$('#lcontacto').append('<li><a href="tel:'+contacts[i].phoneNumbers[0].value+'">'+contacts[i].name.formatted+'</a></li>');
+				$('#lcontacto').append('<li><a href="">'+contacts[i].name.formatted+'</a></li>');
+				for(j=0;j<contacts[i].phoneNumbers.length;j++){
+					alert(contacts[i].phoneNumbers[j].value);	
+				}
 			}
 		};
 		
