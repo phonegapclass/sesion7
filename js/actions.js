@@ -117,7 +117,7 @@ function leerContactos(){
 	document.addEventListener("deviceready",function(){
 		function onSuccess(contacts) {
 			for(i=0;i<contacts.length;i++){
-				alert(contacts[i].name.formatted);
+				$('#lcontacto').html('<li>'+contacts[i].name.formatted+'</li>');
 			}
 		};
 		
@@ -127,7 +127,7 @@ function leerContactos(){
 		
 		// find all contacts with 'Carlos' in any name field
 		var options      = new ContactFindOptions();
-		options.filter   = "Carlos";
+		options.filter   = "P";
 		options.multiple = true;
 		var fields       = ["displayName", "name"];
 		navigator.contacts.find(fields, onSuccess, onError, options);
